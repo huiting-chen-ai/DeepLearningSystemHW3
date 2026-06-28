@@ -331,7 +331,18 @@ class NDArray:
         """
 
         ### BEGIN YOUR SOLUTION
-        raise NotImplementedError()
+        # new_stride = []
+        # for i, s in enumerate(new_shape):
+        #     if s == self._shape[i]:
+        #         new_stride.append(self._strides[i])
+        #     elif self._shape[i] == 1:
+        #         new_stride.append(0)
+        #     if s != 1 and s != self._shape[i]:
+        #         raise AssertionError
+        for i, s in enumerate(new_shape):
+            if self._shape[i] != 1 and s != self._shape[i]:
+                raise AssertionError
+        return NDArray.make(new_shape, self._strides, self._device, self._handle, self._offset)
         ### END YOUR SOLUTION]
 
     ### Get and set elements
