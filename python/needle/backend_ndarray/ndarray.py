@@ -402,9 +402,12 @@ class NDArray:
         new_stride = []
         new_offset = self._offset
         for i, s in enumerate(slices):
-            new_shape.append((s[1]-s[0])//s[2])
-            new_stride.append(self._strides[i]*s[2])
-            new_offset += self._strides[i]*s[0]
+            start = s.start
+            stop = s.stop
+            step = s.step
+            new_shape.append((stop-start+step-1)//s[2])
+            new_stride.append(self._strides[i]*step)
+            new_offset += self._strides[i]*start
         return NDArray.make(new_shape, new_stride, self._device, self._handle, new_offset)
 
         ### END YOUR SOLUTION
