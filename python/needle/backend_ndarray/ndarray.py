@@ -262,7 +262,19 @@ class NDArray:
         """
 
         ### BEGIN YOUR SOLUTION
-        raise NotImplementedError()
+        new_shape_prod = 1
+        new_strides = []
+        for i in new_shape[::-1]:
+            new_strides.append(new_shape_prod)
+            new_shape_prod *= i
+        current_shape_prod = prod(self._shape)
+        if new_shape_prod != current_shape_prod:
+            raise ValueError
+        if not self.is_compact():
+            raise ValueError
+
+        new_strides = tuple(new_strides[::-1])
+        return NDArray.make(new_shape, new_strides, self._device, self._handle, self._offset)
         ### END YOUR SOLUTION
 
     def permute(self, new_axes: tuple[int, ...]) -> "NDArray":
