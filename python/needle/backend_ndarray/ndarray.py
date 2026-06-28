@@ -405,7 +405,7 @@ class NDArray:
             start = s.start
             stop = s.stop
             step = s.step
-            new_shape.append((stop-start+step-1)//s[2])
+            new_shape.append((stop-start+step-1)//step)
             new_stride.append(self._strides[i]*step)
             new_offset += self._strides[i]*start
         return NDArray.make(new_shape, new_stride, self._device, self._handle, new_offset)
