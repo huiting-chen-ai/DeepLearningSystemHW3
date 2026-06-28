@@ -398,7 +398,15 @@ class NDArray:
         assert len(slices) == self.ndim, "Need indexes equal to number of dimensions"
 
         ### BEGIN YOUR SOLUTION
-        raise NotImplementedError()
+        new_shape = []
+        new_stride = []
+        new_offset = self._offset
+        for i, s in enumerate(slices):
+            new_shape.append((s[1]-s[0])//s[2])
+            new_stride.append(self._strides[i]*s[2])
+            new_offset += self._strides[i]*s[0]
+        return NDArray.make(new_shape, new_stride, self._device, self._handle, new_offset)
+
         ### END YOUR SOLUTION
 
     def __setitem__(self, idxs: int | slice | tuple[int | slice, ...], other: Union["NDArray", float]) -> None:
