@@ -124,7 +124,16 @@ void ScalarSetitem(const size_t size, scalar_t val, AlignedArray* out, std::vect
    */
 
   /// BEGIN SOLUTION
-  assert(false && "Not Implemented");
+  int ndim = shape.size();
+  for (size_t i = 0; i < size; ++i) {
+    size_t out_idx = offset;
+    size_t temp = i;
+    for (int d = ndim - 1; d >= 0; --d) {
+      out_idx += (temp % shape[d]) * strides[d];
+      temp /= shape[d];
+    }
+    out->ptr[out_idx] = val;
+  }
   /// END SOLUTION
 }
 
