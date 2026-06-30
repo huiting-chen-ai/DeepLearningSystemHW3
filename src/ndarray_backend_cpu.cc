@@ -185,7 +185,7 @@ void name(const AlignedArray& a, const AlignedArray& b, AlignedArray* out) { \
 
 EWISE_TWO_OP(EwiseMul, std::multiplies<scalar_t>())
 EWISE_TWO_OP(EwiseDiv, std::divides<scalar_t>())
-EWISE_TWO_OP(EwiseMaximum, std::max<scalar_t>())
+EWISE_TWO_OP(EwiseMaximum, std::max)
 EWISE_TWO_OP(EwiseEq, std::equal_to<scalar_t>())
 EWISE_TWO_OP(EwiseGe, std::greater_equal<scalar_t>())
 
