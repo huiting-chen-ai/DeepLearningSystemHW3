@@ -208,7 +208,7 @@ void name(const AlignedArray& a, scalar_t val, AlignedArray* out) { \
 SCALAR_OP(ScalarMul, std::multiplies<scalar_t>())
 SCALAR_OP(ScalarDiv, std::divides<scalar_t>())
 SCALAR_OP(ScalarPower, std::pow)
-SCALAR_OP(ScalarMaximum, std::max<scalar_t>())
+SCALAR_OP(ScalarMaximum, std::max)
 SCALAR_OP(ScalarEq, std::equal_to<scalar_t>())
 SCALAR_OP(ScalarGe, std::greater_equal<scalar_t>())
 
