@@ -230,9 +230,9 @@ void Matmul(const AlignedArray& a, const AlignedArray& b, AlignedArray* out, uin
   /// BEGIN SOLUTION
   for (size_t i = 0; i < m; i++) {
     for (size_t j = 0; j < p; j++) {
-      out->ptr[i*m+j] = 0;
+      out->ptr[i*p+j] = 0;
       for (size_t k = 0; k < n; k++) {
-        out->ptr[i*m+j] += a.ptr[i*m+k]*b.ptr[k*n+j];
+        out->ptr[i*p+j] += a.ptr[i*n+k]*b.ptr[k*p+j];
       }
     }
   }
@@ -265,7 +265,7 @@ inline void AlignedDot(const float* __restrict__ a,
   out = (float*)__builtin_assume_aligned(out, TILE * ELEM_SIZE);
 
   /// BEGIN SOLUTION
-  assert(false && "Not Implemented");
+  
   /// END SOLUTION
 }
 
